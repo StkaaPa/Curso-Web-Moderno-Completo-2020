@@ -20,7 +20,7 @@ log();
 log("Bom dia!");
 // -> Bom dia!
 
-//* operador rest ---- possui dois nomes rest(agrupar) e spread(espalhar)
+//* operador (...) ---- possui dois nomes rest(agrupar) e spread(espalhar)
 function total(...numeros) {
   let total = 0;
   numeros.forEach((n) => (total += n));
