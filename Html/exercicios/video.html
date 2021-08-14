@@ -12,7 +12,7 @@
 
 <div>
   <button wm-play="meuVideo">Play</button>
-  <button wm-play="meuVideo">Pause</button>
+  <button wm-pause="meuVideo">Pause</button>
 </div>
 
 <style>
@@ -32,3 +32,22 @@
     width: 0%;
   }
 </style>
+
+<script>
+  function configurarVideo(id) {
+    const vid = document.getElementById(id);
+    vid.oncontextmenu = () => false; // faz com que não abre um menu no video quando se carrega com o mouse 2
+
+    document.querySelector(`[wm-play=${id}]`).onclick = (e) => vid.play();
+    document.querySelector(`[wm-pause=${id}]`).onclick = (e) => vid.pause();
+
+    setInterval(() => {
+      const percentual = (vid.currentTime / vid.duration) * 100;
+      const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`);
+      valorDiv.style.width = `${percentual}%`;
+      valorDiv.innerHTML = `${percentual.toFixed(1)}%`;
+    }, 500);
+  }
+
+  configurarVideo("meuVideo");
+</script>
