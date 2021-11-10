@@ -6,7 +6,41 @@
     <title>Especificidade CSS</title>
     <style>
         /* https://specificity.keegan.st/ */
-    </style>
+        /*
+            1. INLINE
+            2. ID
+            3. CLASSE, PSEUDO-CLASSE, ATRIBUTOS
+            4. ELEMENTOS, PSEUDO-ELEMENTOS
+        */
+
+        body {
+            font-size: 25px;
+        }
+
+        div {
+            background-color: #00b;
+            color: #fff;
+        }
+
+        /* SE TROCAR A ORDEM DESTES ULTIMOS DOIS DIVS div[wm-cor] e o div:hover
+            O HOVER NÃO VAI FUNCIONAR */
+        div[wm-cor] {
+            background-color: darkorange;
+        }
+
+        div.estilo{
+            background-color: green;
+        }
+
+        
+        #unico1, #unico2 {
+            background-color: #000;
+        }
+        
+        div:hover, #unico1:hover, #unico2:hover{
+            background-color: purple;
+        }
+        </style>
 </head>
 
 <body>
