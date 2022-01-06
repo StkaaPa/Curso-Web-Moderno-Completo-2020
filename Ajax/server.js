@@ -12,7 +12,7 @@ const multer = require("multer");
 //* personalizar a pasta onde são guardados os arquivos
 const storage = multer.diskStorage({
   destination: function (rq, file, callback) {
-    callback(null, './upload');
+    callback(null, "./upload");
   },
   filename: function (req, file, callback) {
     callback(null, `${Date.now()}_${file.originalname}`);
@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }).single("arquivo");
 
-app.post('/upload', (req, res) => {
+app.post("/upload", (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       return res.end("Ocorreu um Erro!!");
@@ -30,4 +30,12 @@ app.post('/upload', (req, res) => {
     res.end("Concluído com Sucesso!");
   });
 });
+
+app.post("/formulario", (req, res) => {
+  res.send({
+    ...req.body,
+    id: 7
+  })
+})
+
 app.listen(8080, () => console.log("Executando....."));
